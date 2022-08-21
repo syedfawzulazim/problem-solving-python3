@@ -26,7 +26,7 @@ dict1 = defaultdict(list) # key = any | value = List (default type)
 dict2 = defaultdict(set)  # key = any | value = set (default type)
 dict4 = defaultdict(set)  # key = any | value = set (default type)
 dict3 = defaultdict(int)  # key = any | value = int (default type)
-
+    
 #only List methonds are available
 dict1[0] = 'A'
 dict1[1].append('C')
@@ -42,20 +42,21 @@ dict2[0].add(1)
 dict2[1].add(2)
 dict2[1].add(2)
 
-print(dict2) # value = set() so no duplicate value entry
+
+print(f"Dict-2: {dict2[2]}") # value = set() so no duplicate value entry
 
 # only int methods are available
 dict3[0] = 1
 dict3[1] = 2
 dict3[2] = 3
 
-print(dict3)
+print(f'Dict-3 {dict3}')
 print(dict3[3]) # as no key/value prints '0' as its value type is int
 
 #key = tupple
-dict4[(0,1)].add(1)
-dict4[(0,1)].add(1)
-dict4[(0,2)].add(2)
+# dict4[(0,1)].add(1)
+# dict4[(0,1)].add(1)
+# dict4[(0,2)].add(2)
 
 print(dict4)
 print(dict4[(0,2)])

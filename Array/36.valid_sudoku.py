@@ -16,7 +16,7 @@ def isValidSudoku1(board: List[List[str]]) -> bool:
                         return False
                 rows[r].add(board[r][c])
                 cols[c].add(board[r][c])
-                square[(r //3,c //3)].add(board[r][c])
+                square[(r //3,c //3)].add(board[r][c]) # 0,1,2 = 0, 0 
         return True      
 
         #print(rows.items())
