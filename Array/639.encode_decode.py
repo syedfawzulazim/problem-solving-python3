@@ -1,3 +1,4 @@
+from numbers import Number
 import re
 from tkinter import W
 
@@ -8,7 +9,7 @@ def encode(strs):
                 text += str(len(x)) + "#" + x
         return text
 
-def decode(strs):
+def decode1(strs):
         lst = []
         i = 0
         while i < len(strs):
@@ -22,8 +23,22 @@ def decode(strs):
         return lst 
         
 
-
-
+def decode(strs):
+        hashfound = False
+        num = ""
+        r = 0
+        l = 0
+        res = []
+        while r < len(strs):
+                if strs[r] == "#":
+                        num = strs[l:r]
+                        res.append(strs[r+1: r+1+int(num)])
+                        l = r + 1 + int(num)
+                        r = l
+                else:
+                        r += 1
+                
+        print(res)
 
 encoded = encode(["bm", "kaku", "Kaki"])
 print(encoded)
