@@ -1,3 +1,4 @@
+
 from typing import Optional
 
 
@@ -6,24 +7,27 @@ class Node:
         self.val = int(x)
         self.next = next
         self.random = random
-        
+
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        curr = head
-        hashmap = {}
-        while curr:
-            hashmap[curr] = Node(curr.val)
-            curr = curr.next
-        
+        hashmap = {None : None}
 
         curr = head
         while curr:
-            if curr.next:
-                hashmap[curr].next = hashmap[curr.next]
-            if curr.random:
-                hashmap[curr].random = hashmap[curr.random]
+            new_node  =  Node(curr.val)
+            hashmap[curr] = new_node
             curr = curr.next
+
+        curr = head
+        while curr:
+            new_node = hashmap[curr]
+            new_node.next = hashmap[curr.next]
+            new_node.random = hashmap[curr.random]
+            curr = curr.next
+        
         return hashmap[head]
+
+        
 
 
 head = Node(7)

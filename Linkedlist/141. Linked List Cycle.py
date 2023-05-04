@@ -2,22 +2,33 @@ from typing import Optional
 
 
 class ListNode:
-    def __init__(self, x):
+    def __init__(self, x, y = None):
         self.val = x
-        self.next = None
+        self.next = y
 
 class Solution:
+    # def hasCycle(self, head: Optional[ListNode]) -> bool:
+    #     hashmap = {}
+    #     curr = head
+    #     while curr:
+    #         if curr in hashmap:
+    #             return True
+    #         hashmap[curr] = curr.val
+    #         curr = curr.next
+    #     return False
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        hashmap = {}
-        curr = head
-        while curr:
-            if curr in hashmap:
+        if not head:
+            return False
+        slow = head
+        fast = head.next
+
+        while head and fast:
+            if slow == fast:
                 return True
-            hashmap[curr] = curr.val
-            curr = curr.next
+            slow = slow.next
+            fast = fast.next.next if fast.next else None
+            head = head.next
         return False
-
-
 
 
 
